@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>HFT IPR Static ➡ Dynamic</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <link rel="stylesheet" href="css/theme/hft.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/atom-one-dark.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background-size="cover"
+          data-background-image="https://media.giphy.com/media/Y655D2pOIBCQU/giphy.gif"
+        >
+          <h1 class="title">IPR</h1>
+          <h3 class="title">Static ➡ Dynamic</h3>
+        </section>
+
+
+				<section>
+          <section>
+            <h2>Frontend vs Backend</h2>
+            <img style="border: 0" src="https://media.giphy.com/media/xTiIzAWLqreqgY1I0o/giphy.gif" />
+          </section>
+          <section data-markdown>
+            ### Aufgaben Frontend
+  
+            - Schnittstelle zum Benutzer via GUI
+            - Saubere Darstellung auf versch. Geräten (responsive)
+            - Reagieren auf Benutzereingaben
+            - HTML, CSS, JavaScript
+          </section>
+          <section data-markdown>
+            ### Aufgaben Backend
+    
+            - Schnittstelle zur Datenbank
+            - Schnittstelle zum Frontend
+            - Reagieren auf Anfragen des Frontends
+            - Authentifizierung
+            - Ruby on Rails, PHP, Python, SQL, Java, Scala, …
+          </section>
+        </section>
+
+
+        <section>
+          <section>
+            <h2>Node.js</h2>
+          </section>
+          <section>
+            <h3>Allgemeines Node.js</h3>
+            <ul>
+              <li>
+                Eine Plattform, die auf der JavaScript-Runtime von Chrome
+                aufbaut, um schnell und einfach skalierbare Netzwerkanwendungen
+                zu erstellen.
+              </li>
+              <li>
+                Verwendet ein ereignisgesteuertes, blockierungsfreies
+                I/O-Modell, das leicht und effizient ist.
+              </li>
+              <li>
+                Perfekt für datenintensive Echtzeitanwendungen, die über
+                verteilte Geräte laufen.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Node.js 👍</h3>
+            <ul>
+              <li>JavaScript!</li>
+              <li>Schnell und einfach zu erlernen</li>
+              <li>Massenhaft Tutorials & Hilfe online</li>
+              <li>Läuft auf allen gängigen Platformen</li>
+              <li>
+                npm – "the largest set of open source libraries in the world."
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Node.js 👎</h3>
+            <ul>
+              <li>JavaScript!</li>
+              <li>Häufig Streitgkeiten (io.js, ayo.js)</li>
+              <li>
+                Tutorials sind meißt eigensinnig / engstirnig (opinionated)
+              </li>
+              <li>Riesige Auswahl an Open Source packages</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wie funktioniert Node.js</h2>
+            <ul>
+              <li>Ist nicht nach außen sichtbar, sondern nur der gerenderte Inhalt (wie Z.B. HTML)</li>
+              <li>Wird zur Ladezeit bzw. Aufruf auf dem Server ausgeführt.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Für was wird Node.js verwendet?</h2>
+            <ul>
+              <li>Web-Software wie bspw. PayPal</li>
+              <li>Middleware zwischen Frontend und Datenbank</li>
+              <li>REST Schnittstellen bauen</li>
+              <li>Desktop Apps vie <a href="https://electronjs.org/" target="_blank">Electron</a></li>
+              <li>…</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Node.js installieren</h2>
+            <p><a href="https://nodejs.org/en/download/" target="_blank">Node.JS Downloads</a></p>
+            <small>LTS: Long Term Support</small>
+          </section>
+          <section>
+            <h2>Aufbau einer Anwendung</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              node --version
+              touch index.js
+              node index.js
+            </code></pre>
+            <pre><code class="js" data-trim data-noescape>
+              const fs = require('fs');
+
+              fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h2>Ein Projekt intialisieren</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              npm init
+            </code></pre>
+            <pre><code class="js" data-trim data-noescape>
+            {
+              "name": "hft-vl-11-example-1",
+              "version": "1.0.0",
+              "description": "",
+              "main": <mark>"index.js"</mark>,
+              "scripts": {
+                <mark>"start": "node index.js"</mark>,
+                "test": "echo \"Error: no test specified\" && exit 1"
+              },
+              "author": "",
+              "license": "ISC"
+            }
+            </code></pre>
+            <small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
+          </section>
+          <section>
+            <h2>Node.js als WebBackend um HTML zu verschicken</h2>
+          </section>
+          <section>
+            <pre><code class="bash" data-trim data-noescape>
+              npm init
+              npm install ejs
+              npm install express
+            </code></pre>
+            <small>Die package.json wird dann automatisch angepasst!</small>
+          </section>
+          <section>
+            <h2>Ordner Struktur</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              - views
+              ----- partials
+              ---------- header.ejs
+              ----- pages
+              ---------- index.ejs
+              ---------- about.ejs
+              - package.json
+              - server.js
+            </code></pre>
+          </section>
+          <section>
+              <h3>Imports / Exports</h3>
+              <pre><code class="js" data-trim>
+                // imports.js
+                const { sum } = require('./exports.js');
+  
+                sum(1, 2);
+              </code></pre>
+              <pre><code class="js" data-trim>
+                // exports.js
+                function sum(a, b) {
+                  return a + b;
+                }
+  
+                function notExported() {
+                  console.log('bazinga')
+                }
+  
+                module.exports = {
+                  sum
+                }
+              </code></pre>
+            </section>
+          <section>
+            <h2>Routing</h2>
+            <pre><code class="js" data-trim data-noescape>
+              const express = require('express');
+
+              const port = process.env.PORT || 3000;
+              const app = express();
+
+              // GET Requests vgl. PHP $_GET, aber auch eben auch im Browser localhost:3000
+              app.get('/', function (req, res) {
+                res.send('Hello World!')
+              })
+
+              // POST Requests vgl. PHP $_POST
+              app.post('/', function (req, res) {
+                res.send('Got a POST request')
+              })
+            </code></pre>
+          </section>
+          <section>
+            <h2>Public / Static: Bilder, CSS, usw.</h2>
+            <pre><code class="js" data-trim data-noescape>
+              app.use('/public', express.static(path.join(__dirname, 'public')))
+            </code></pre>
+          </section>
+          <section>
+            <h2>Template Engine auswählen</h2>
+            <ul>
+              <li><a href="https://mustache.github.io/">Mustache</a></li>
+              <li><a href="http://handlebarsjs.com/">Handlebars</a></li>
+              <li><a href="https://olado.github.io/doT/"</a>doT</li>
+              <li><a href="http://www.dustjs.com/">Dust</a></li>
+              <li><a href="http://underscorejs.org/">Underscore</a></li>
+              <li><a href="https://pugjs.org/">Pug</a></li>
+              <li>uvm.</li>
+            </ul>
+            <pre><code class="js" data-trim data-noescape>
+              app.set('view engine', 'ejs');
+            </code></pre>
+          </section>
+          <section>
+            <h2>Von statischem HTML zu Node.js</h2>
+            <ul>
+              <li>index.html in index.ejs umbenennen und in pages/ verschieben</li>
+              <li>JavaScript Snippets innerhalb des HTMLs einbauen</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Routing mit Templates</h2>
+            <pre><code class="js" data-trim data-noescape>
+              const express = require('express');
+
+              const port = process.env.PORT || 3000;
+              const app = express();
+
+              app.get('/', function(req, res) {
+                  res.render('pages/index');
+              });
+
+              app.get('/about', function(req, res) {
+                  res.render('pages/about');
+              });
+
+              app.listen(port, function() {
+                console.log(`Server listening on port ${port}…`)
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h2>Daten in die Views übergeben</h2>
+            <pre><code class="js" data-trim data-noescape>
+              app.get('/', function(req, res) {
+                const pageTitle = 'This is a title';
+                const anArrayOfData = ['This', 'is', 'something', 'to', 'loop'];
+
+
+                res.render('pages/index', {
+                  title: pageTitle,
+                  data: anArrayOfData
+                });
+              });
+
+
+
+              const server = app.listen(port, () => {
+                console.log(`Server listening on port ${port}…`)
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h2>Daten in die Views übergeben</h2>
+            <pre><code class="html" data-trim data-noescape>
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang="en"&gt;
+              &lt;head&gt;
+                  &lt;% include ../partials/head %&gt;
+              &lt;/head&gt;
+              &lt;body class="container"&gt;
+                &lt;div&gt;
+                  &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+                  &lt;p&gt;Welcome to templating using EJS&lt;/p&gt;
+                  &lt;ul&gt;
+                      &lt;% data.forEach(function(d) { %&gt;
+                          &lt;li&gt;&lt;%= d %&gt;&lt;/li&gt;
+                      &lt;% }); %&gt;
+                  &lt;/ul&gt;
+                  &lt;p&gt;Checkout the &lt;a href="/about"&gt;About page!&lt;/a&gt;&lt;/p&gt;
+                &lt;/div&gt;
+
+              &lt;footer&gt;
+                  &lt;% include ../partials/footer %&gt;
+              &lt;/footer&gt;
+
+              &lt;/body&gt;
+              &lt;/html&gt;
+            </code></pre>
+          </section>
+        </section>
+
+
+        <section>
+          <section>
+            <h2>PHP</h2>
+          </section>
+          <section>
+            <h2>Allgemeines</h2>
+            <ul>
+              <li>PHP: Hypertext Preprocessor</li>
+              <li>Serverseitige & interpretierte Scriptsprache</li>
+              <li>Offene Implementierung</li>
+              <li>Objektorientierung möglich</li>
+              <li>Keine statische Typisierung</li>
+            </ul>
+          </section>
+          <section>
+            <h2>PHP 👍</h2>
+            <ul>
+              <li>Viele Frameworks (Symfony, Zend, cakePHP, …)</li>
+              <li>Viele Resourcen im Web</li>
+              <li>IDE Support</li>
+              <li>Einfacher Einstieg</li>
+              <li>Package Manager: Pear, Composer</li>
+            </ul>
+  
+            <!--<img src="http://www.nikola-breznjak.com/blog/wp-content/uploads/2014/10/scepticKid.jpg" />-->
+          </section>
+          <section>
+            <h2>PHP 👎</h2>
+            <ul>
+              <li>Viel gescripte kann die Code Qualität mindern</li>
+              <li>SQL Injections müssen aktiv abgefangen werden</li>
+              <li><a href="http://www.phpwtf.org/" target="_blank">http://www.phpwtf.org/</a></li>
+              <li><a href="http://phpsadness.com/" target="_blank">http://phpsadness.com/</a></li>
+            </ul>
+          </section>
+          <section data-markdown>
+            ## PHP ausführen
+  
+            ```
+            &lt;?php … ?&gt;
+            ```
+  
+            Lokaler Dev Server oder
+            <a href="https://www.apachefriends.org/de/index.html" target="_blank">XAMPP</a>
+            ```
+            php -S localhost:8000
+            ```
+          </section>
+          <section>
+            <h2>Wie funktioniert PHP</h2>
+            <ul>
+              <li>Ist nicht nach außen sichtbar, sondern nur der gerenderte Inhalt (wie Z.B. HTML)</li>
+              <li>Wird zur Ladezeit bzw. Aufruf auf dem Server ausgeführt.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Für was wird PHP verwendet?</h2>
+            <ul>
+              <li>Web-Software wie bspw. CMS Systeme oder Facebook</li>
+              <li>Middleware zwischen Frontend und Datenbank</li>
+              <li>REST Schnittstellen bauen</li>
+              <li>mit *.phar Archiven ausführbare Programme erstellen</li>
+              <li>…</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Von statischem HTML zu PHP</h2>
+            <ul>
+              <li>index.html in index.php umbenennen</li>
+              <li>PHP Snippets innerhalb des HTMLs einbauen</li>
+            </ul>
+  
+            <pre><code class="php" data-trim data-noescape>
+              &lt;body&gt;
+                &lt;h2&gt;Meine Headline&lt;/h2&gt;
+                &lt;?php echo 24*42; ?&gt;
+              &lt;/body&gt;
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Übung</h2>
+            <ul>
+              <li><a href="https://classroom.github.com/a/#">Static-Dynamic Assignment</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Weitere Links</h2>
+            <ul>
+              <li><a href="http://t3n.de/news/node-js-fork-ayo-streit-open-source-850819/" target="_blank">Node.js Fork Ayo.js T3N</a></li>
+              <li><a href="https://www.w3schools.com/nodejs/nodejs_intro.asp" target="_blank">Node.js Intro</a></li>
+              <li><a href="http://johnny-five.io/" target="_blank">Johnny-Five is the JavaScript Robotics & IoT Platform</a></li>
+              <li><a href="http://expressjs.com/de/starter/installing.html" target="_blank">ExpressJS</a></li>
+              <li><a href="https://scotch.io/tutorials/use-ejs-to-template-your-node-application" target="_blank">EJS Template Engine verwenden</a></li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+    </script>
+  </body>
+</html>
